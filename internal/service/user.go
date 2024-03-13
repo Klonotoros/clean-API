@@ -10,6 +10,8 @@ import (
 	"time"
 )
 
+//go:generate mockgen -source=user.go -destination=user_mock.go -package service
+
 type UserService interface {
 	Login(email, password string) (string, error)
 	Register(email, password string) (string, error)

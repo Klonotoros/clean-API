@@ -2,6 +2,8 @@ package repository
 
 import "database/sql"
 
+//go:generate mockgen -source=repositories.go -destination=repositories_mock.go -package repository
+
 type Repositories interface {
 	User() UserRepository
 	Conference() ConferenceRepository
