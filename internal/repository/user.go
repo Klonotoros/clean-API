@@ -7,6 +7,8 @@ import (
 	"log"
 )
 
+//go:generate mockgen -source=user.go -destination=user_mock.go -package repository
+
 type UserRepository interface {
 	Save(model.User) (model.User, error)
 	GetUserByEmail(string) (model.User, error)
@@ -38,7 +40,7 @@ func (u user) Save(user model.User) (model.User, error) {
 			log.Println(err)
 		}
 	}(stmt)
-	
+
 	result, err := stmt.Exec(user.Email, user.Password)
 
 	if err != nil {

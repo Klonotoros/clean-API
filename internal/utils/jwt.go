@@ -2,7 +2,6 @@ package utils
 
 import (
 	"errors"
-	"fmt"
 	"github.com/golang-jwt/jwt/v5"
 )
 
@@ -16,7 +15,6 @@ func VerifyToken(token string, signingSecret string) (int64, error) {
 	})
 
 	if err != nil {
-		fmt.Println("Could not parse token")
 		return 0, errors.New("could not parse token")
 	}
 
