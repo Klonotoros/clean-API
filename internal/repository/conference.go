@@ -8,6 +8,7 @@ import (
 	"log"
 )
 
+//go:generate mockgen -source=conference.go -destination=conference_mock.go -package repository
 type ConferenceRepository interface {
 	Save(conference model.Conference) (model.Conference, error)
 	GetAllConferences() ([]model.Conference, error)

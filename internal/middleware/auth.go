@@ -12,14 +12,14 @@ func Authenticate(config dto.Config) gin.HandlerFunc {
 		token := context.Request.Header.Get("Authorization")
 
 		if token == "" {
-			context.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"message": "Not authorized."})
+			context.AbortWithStatusJSON(http.StatusUnauthorized, dto.ErrorResponse{Message: "No token provided"})
 			return
 		}
 
 		userId, err := utils.VerifyToken(token, config.SigningSecret)
 
 		if err != nil {
-			context.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"message": "Not authorized."})
+			context.AbortWithStatusJSON(http.StatusUnauthorized, dto.ErrorResponse{Message: "Wrong token"})
 			return
 		}
 

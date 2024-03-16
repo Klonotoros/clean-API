@@ -27,14 +27,14 @@ func (u userController) Login(context *gin.Context) {
 	err := context.ShouldBindJSON(&loginRequest)
 
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"message": "Could not parse request data."})
+		context.JSON(http.StatusBadRequest, dto.LoginResponse{Message: "Login fail", Token: ""})
 		return
 	}
 
 	token, err := u.userService.Login(loginRequest.Email, loginRequest.Password)
 
 	if err != nil {
-		context.JSON(http.StatusUnauthorized, gin.H{"message": err.Error()})
+		context.JSON(http.StatusUnauthorized, dto.LoginResponse{Message: "Login fail", Token: ""})
 		return
 	}
 
@@ -45,13 +45,13 @@ func (u userController) Login(context *gin.Context) {
 func (u userController) Register(context *gin.Context) {
 	var registerRequest dto.RegisterRequest
 	if err := context.ShouldBindJSON(&registerRequest); err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"message": "Could not parse request data."})
+		context.JSON(http.StatusBadRequest, dto.RegisterResponse{Message: "Register failed", Token: ""})
 		return
 	}
 
 	token, err := u.userService.Register(registerRequest.Email, registerRequest.Password)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not save user.", "error": err.Error()})
+		context.JSON(http.StatusInternalServerError, dto.RegisterResponse{Message: "Register failed", Token: ""})
 		return
 	}
 

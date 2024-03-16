@@ -50,7 +50,7 @@ func (u userService) Register(email, password string) (string, error) {
 		return "", fmt.Errorf("password is required")
 	}
 
-	if len(password) < 3 {
+	if len(password) < 8 {
 		return "", fmt.Errorf("password must be at least 8 characters")
 	}
 
