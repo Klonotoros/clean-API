@@ -1,4 +1,4 @@
-# A-Go-powered-Conference-Booking-REST-API
+Conference-Booking-REST-API
 
 ## Overview
 
