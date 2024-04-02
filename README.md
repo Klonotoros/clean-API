@@ -40,7 +40,8 @@ go get -u github.com/go-sql-driver/mysql
 - 🔐 **JWT (JSON Web Tokens)**: Token-based authentication for secure communication.
 - 📬 **Postman**: API development and testing tool.
 - 💻 **IntelliJ GoLand**: Integrated development environment for Go.
-
+-  ☘ **Ginkgo**: Ginkgo is a testing framework for Go designed to help you write expressive tests.
+-  Ω **Gomega**: Gomega is a matcher/assertion library. It is best paired with the Ginkgo BDD test framework, but can be adapted for use in other contexts too.
 ## Quick Start
 
 1. Clone the repository.
